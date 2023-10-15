@@ -1,0 +1,185 @@
+---
+title: "Class part one"
+output: html_document
+date: "2023-10-13"
+---
+
+## R Markdown
+
+
+```{r}
+police <- read.csv("https://raw.githubusercontent.com/asheikhz2/TTU_Zadeh/main/police_app.csv")
+head(police)
+
+```
+## Lets work with dplyr lybray 
+
+```{r}
+data("mtcars")
+head(mtcars)
+```
+## lets import anothery library name fastDummies 
+```{r}
+library(fastDummies)
+mtcars_new <- dummy_cols(mtcars, select_columns = c("cyl","gear"), remove_selected = TRUE, remove_first_dummy = TRUE )
+head(mtcars_new)
+
+```
+
+# Matrix Algebra In R
+
+```{r}
+A <- matrix(c(1,2,3,4,5,6), ncol=3)
+A
+```
+```{r}
+b <-matrix(c(1,2,3,4,5,6,7,8),ncol=4, byrow = T)
+b
+
+```
+```{r}
+b <-matrix(c(1,2,3,4,5,6,7,8),ncol=4)
+b
+```
+```{r}
+c <-matrix(c(1,2,3,0,0,0,4,4,3,1,2,5), nrow =4)
+c
+```
+```{r}
+d <- matrix(c(1,4,3,"r","c",2,3,4,4), ncol=3)
+d
+
+```
+```{r}
+dim(d)
+dim(c)
+dim(b)
+```
+```{r}
+nrow(b)
+ncol(b)
+nrow(d)
+
+```
+```{r}
+col_vactor= matrix(c(1,2,3,4,5,6), ncol = 1)
+col_vactor
+```
+```{r}
+col_vactor[1:3]
+d[1:2,1:2]
+```
+```{r}
+a <- matrix(c(1,2,3,2,3,4,1,4,6), ncol = 3)
+a
+```
+```{r}
+t(a)
+
+```
+```{r}
+## regular matrix multiplication (dot product)
+dot_product= a %*% a 
+dot_product
+
+
+```
+```{r}
+#Element wise multipliclation 
+em_multipliclation <- a*a
+em_multipliclation
+
+```
+```{r}
+c<- matrix(c(1,2,3,2,3,4), nrow = 3, byrow = T)
+c
+```
+```{r}
+el_check <- a %*% c
+el_check
+
+```
+```{r}
+det(a)
+```
+```{r}
+# we use solve function for invers a martix
+A <- matrix(c(3,4,5,2,3,4,3,1,4), ncol = 3, byrow = T)
+A
+```
+```{r}
+a_invers= solve(A)
+a_invers
+print("a_invers's determinate")
+det(a_invers)
+```
+```{r}
+# inverts multiplicetion 
+#inv_mul= A %*% a_invers
+inv_mul= A %*% a_invers
+round((inv_mul), 10)
+```
+# inverts multiplicetion gives us identity matrix. 
+```{r}
+I2= diag(4)
+print("I2")
+
+A <- matrix(c(1,2,3,4,5,6,7,8), ncol = 4, byrow = T)
+print("A")
+print("------")
+print(A)
+
+print("------")
+print(I2)
+
+```
+# so diag function create identity matrix.
+```{r}
+A %*% I2
+
+```
+# discution , if the number of columns and number of rows are same then 
+# dot multiplicetion work.
+# if we multiply a normal matrix with a identity matrix we will get 
+# the result as like as normal matrix
+```{r}
+I3 <- diag(5)
+I3
+```
+```{r}
+a_tranform <-t(A)
+print("a_tranform")
+a_tranform
+print("Multiply with transform matrix")
+a_tranform %*% diag(2)
+
+
+```
+```{r}
+# lets create a identity matrix 
+
+A <- matrix(c(3,4,5,2,3,4,3,1,4), ncol = 3, byrow = T)
+b <- matrix(c(1,4,7,2,5,8,3,6,9), ncol = 3, byrow = T)
+b
+det(b)
+det(A)
+A*b
+A%*%b
+t(b)
+solve(A)
+I= diag(3)
+I
+det(I)
+solve(I)
+I %*% t(A)
+I*A
+det(I*A)
+diag(I*A)
+diag(A)
+
+```
+
+
+
+
+
